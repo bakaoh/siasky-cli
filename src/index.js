@@ -6,7 +6,7 @@ import yargs from 'yargs';
 import axios from 'axios';
 import FormData from 'form-data';
 
-// skynet-cli in.html [out.html]
+// siasky-cli in.html [out.html]
 
 let argv = yargs
   .usage(`Usage: $0 [--deploy] in.html [out.html]`)
@@ -32,9 +32,9 @@ if (source === '-' || !source) {
   run(source, argv);
 }
 
-function uploadFile(html) {
+function uploadFile(path) {
   const formData = new FormData();
-  formData.append('file', html, {});
+  formData.append('file', fs.createReadStream(path), {});
 
   return new Promise((resolve, reject) => {
     axios
@@ -71,22 +71,11 @@ async function run(source, argv) {
         }
       ]
     });
-    let out = argv._[1];
-    if (out) {
-      fs.writeFile(out, html, (err) => {
-        if (err) {
-          process.stderr.write(`Error: ${err}\n`);
-          return process.exit(1);
-        }
-
-        process.stderr.write(`Written to ${out}\n`);
-        process.exit(0);
-      });
-    } else {
-      process.stdout.write(html + '\n');
-      process.exit(0);
-    }
-    await uploadFile(html);
+    let out = `siasky-${Math.floor(Math.random() * Math.floor(100000))}.html`;
+    fs.writeFileSync(out, html);
+    const link = await uploadFile(out);
+    process.stdout.write(link + '\n');
+    fs.unlinkSync(out);
   } catch (err) {
     process.stderr.write(`Error: ${err}\n`);
     return process.exit(1);

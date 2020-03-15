@@ -1,5 +1,5 @@
 {
-  "name": "skynet-cli",
+  "name": "siasky-cli",
   "version": "1.0.0",
   "description": "CLI for Skynet with inline-source",
   "main": "dist/index.js",
@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/bakaoh/skynet-cli.git"
+    "url": "git://github.com/bakaoh/siasky-cli.git"
   },
   "devDependencies": {
     "@babel/cli": "^7.6.2",
@@ -34,11 +34,11 @@
     "prettier": "^1.18.2"
   },
   "bugs": {
-    "url": "https://github.com/bakaoh/skynet-cli"
+    "url": "https://github.com/bakaoh/siasky-cli"
   },
-  "homepage": "https://github.com/bakaoh/skynet-cli",
+  "homepage": "https://github.com/bakaoh/siasky-cli",
   "keywords": [
-    "sc",
+    "skynet",
     "cli"
   ],
   "engines": {
@@ -47,6 +47,8 @@
   "author": "Bakaoh <tatattai@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.19.2",
+    "form-data": "^3.0.0",
     "inline-source": "^7.1.0",
     "yargs": "^14.2.0"
   },

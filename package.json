@@ -1,10 +1,10 @@
 {
   "name": "siasky-cli",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "CLI for Skynet with inline-source",
   "main": "dist/index.js",
   "bin": {
-    "inline-source": "./dist/index.js"
+    "siasky-cli": "./dist/index.js"
   },
   "scripts": {
     "build": "babel src -d dist -s",
